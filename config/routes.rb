@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "home/dashboard"
+  devise_for :users
   root 'static_pages#top'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

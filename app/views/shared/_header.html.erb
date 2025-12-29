@@ -3,9 +3,12 @@
     <div class='container mx-auto px-4'>
       <div class='flex items-center justify-between h-16'>
         <!-- ロゴ -->
-        <%= link_to '/', class: 'flex items-center' do %>
+        <!--<%= link_to '/', class: 'flex items-center' do %>
           <%= image_tag 'logo.png', class: 'h-15' %>
-        <% end %>
+        <% end %>-->
+        <%= link_to (user_signed_in? ? home_dashboard_path : root_path), class: 'flex items-center' do %>
+        <%= image_tag "logo.png", class: "h-15" %>
+        <% end %>        
 
         <!-- ハンバーガーメニューボタン（モバイル） -->
         <button class='lg:hidden p-2 rounded-md hover:bg-gray-200' data-action='click->menu#toggle'>
@@ -30,6 +33,12 @@
             <li>
               <%= link_to 'ブックマーク一覧', '#', class: 'text-gray-700 hover:text-gray-900' %>
             </li>
+            <li>
+              <%= link_to 'ログイン', user_session_path, class: 'text-gray-700 hover:text-gray-900' %>
+            </li>
+            <li>
+               <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 relative z-50' %>
+            </li>
 
             <!-- プロフィールドロップダウン -->
             <li class='relative group'>
@@ -39,7 +48,7 @@
               <div class='absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10'>
                 <div class='px-4 py-2 text-sm text-gray-700 border-b'>らんてっく たろう</div>
                 <%= link_to 'プロフィール', '#', class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' %>
-                <%= link_to 'ログアウト', '#', class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' %>
+                <%= link_to 'ログアウト', '#', data: { "turbo_method": :delete }, class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' %>
               </div>
             </li>
           </ul>
@@ -63,5 +72,10 @@
         </div>
       </div>
     </div>
+    <div class='container mx-auto px-4'>
+      <div class='flex items-center justify-between h-16'>
+      </div>
+    </div>      
   </nav>
+
 </header>
