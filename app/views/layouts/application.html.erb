@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RUNTEQ BOARD APP</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application",type: "module", "data-turbo-track": "reload"%>
+  </head>
+
+  <body>
+    <%= render 'shared/header' %>
+    <%= yield %>
+    <%= render 'shared/footer' %>
+  </body>
+</html>
