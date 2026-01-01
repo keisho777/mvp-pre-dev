@@ -32,10 +32,10 @@ COPY Gemfile Gemfile.lock ./
 # Gem をインストール（Gemfile が変わらない限りキャッシュが効く）
 RUN bundle install
 
-RUN bundle exec rails assets:precompile
-
 # アプリのコードをコピー（最後に実行）
 COPY . /app
+
+RUN bundle exec rails assets:precompile
 
 # FROM ruby:3.3.10 AS development
 # WORKDIR /app
