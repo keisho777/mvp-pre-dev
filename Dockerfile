@@ -26,13 +26,13 @@ RUN apt-get update -qq \
 # Bundler をインストール
 RUN gem install bundler
 
-RUN bundle exec rails assets:precompile
-
 # Gemfile だけを先にコピー（キャッシュ最適化）
 COPY Gemfile Gemfile.lock ./
 
 # Gem をインストール（Gemfile が変わらない限りキャッシュが効く）
 RUN bundle install
+
+RUN bundle exec rails assets:precompile
 
 # アプリのコードをコピー（最後に実行）
 COPY . /app
