@@ -60,4 +60,4 @@ COPY Gemfile Gemfile.lock ./
 # 本番用設定
 RUN bundle config set without 'development test'
 
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "db:migrate", "bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
