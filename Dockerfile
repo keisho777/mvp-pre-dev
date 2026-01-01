@@ -44,6 +44,8 @@ FROM ruby:3.3.10 AS production
 
 ENV RAILS_ENV=production
 
+WORKDIR /app
+
 RUN apt-get update -qq \
 && apt-get install -y libpq5 \
 && rm -rf /var/lib/apt/lists/*
