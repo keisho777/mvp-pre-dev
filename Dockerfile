@@ -26,6 +26,8 @@ RUN apt-get update -qq \
 # Bundler をインストール
 RUN gem install bundler
 
+RUN bundle exec rails assets:precompile
+
 # Gemfile だけを先にコピー（キャッシュ最適化）
 COPY Gemfile Gemfile.lock ./
 
@@ -58,7 +60,4 @@ COPY Gemfile Gemfile.lock ./
 # 本番用設定
 RUN bundle config set without 'development test'
 
-# CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
-
-CMD bundle exec rails assets:precompile \
-&& bundle exec rails server -b 0.0.0.0
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
