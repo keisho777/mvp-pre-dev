@@ -51,6 +51,7 @@ RUN apt-get update -qq \
 # アプリと gem をコピー
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 COPY --from=builder /app /app
+COPY Gemfile Gemfile.lock ./
 
 # 本番用設定
 RUN bundle config set without 'development test'
